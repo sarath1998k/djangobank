@@ -1,0 +1,4 @@
+<option >Select your center</option>
+{% for branch in branches %}
+<option value="{{ branch.pk }}">{{ branch.name }}</option>
+{% endfor %}

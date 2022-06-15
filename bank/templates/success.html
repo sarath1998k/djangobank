@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="heading">
+                     <h3>Account</h3><br>
+                     <h3><span class="orange_color"><br>created</span></h3>
+                  </div>
+               </div>
+            </div>
+
+
+            <div class="row margin_top_30">
+               <div class="col-md-12">
+                  <div class="button_section full center margin_top_30">
+                     <a style="margin:0;" href="{% url 'bbapp:index' %}">Home</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}

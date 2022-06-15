@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<div class="limiter">
+		<div class="container-login100" style="background-image: url('{% static 'images/bg-01.jpg' %}');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+                <span class="login100-form-title p-b-41">
+					Account Registration
+				</span>
+<form  class="login100-form validate-form" id="account_form" data-branches-url="{% url 'bbapp:ajax_load_branches' %}"  method="post" >
+    {% csrf_token %}
+
+	<label class="text-dark ">First Name</label>{{form.first_name}}<br>
+	<label class="text-dark">last_name</label>{{form.last_name}}<br>
+	<label class="text-dark">address_line</label>{{form.address_line_1}}<br>
+	<label class="text-dark">dob(dd/mm/yyyy)</label>{{form.dob}}<br>
+	<label class="text-dark">email</label>{{form.email}}<br>
+	<label class="text-dark">mobile_number</label>{{form.mobile_number}}<br>
+	<label class="text-dark">gender</label>{{form.gender}}<br>
+	<label class="text-dark">type of account</label>{{form.type}}<br>
+	<label class="text-dark">district</label>{{form.district}}<br>
+	<label class="text-dark">branch</label>{{form.branch}}<br>
+	<label class="text-dark">card</label>{{form.card}}<br>
+    <input class="login100-form-btn" type="submit">
+	<button class="login100-form-btn" href="{% url 'bbapp:index' %}">cancel</button>
+</form>
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_district").change(function () {
+      var url = $("#account_form").attr("data-branches-url");   //fetching url from forms
+      var districtId = $(this).val();    //getting selected district id
+
+      $.ajax({
+        url: url,
+        data: {
+          'district_id': districtId             //adding district id to get data
+        },
+        success: function(data) {
+          console.log(data);
+          $("#id_branch").html(data);
+        }
+      });
+
+    });
+
+</script>
+</body>
+</html>

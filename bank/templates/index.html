@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+      <!-- revolution slider -->
+
+      <!-- end revolution slider -->
+      <!-- section --> 
+      <div class="section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="heading">
+                     <h3>New</h3><br>
+                      <h3><span class="orange_color">account</span></h3>
+                  </div>
+               </div>
+            </div>
+
+
+            <div class="row margin_top_30">
+               <div class="col-md-12">
+                  <div class="button_section full center margin_top_30">
+                     <a style="margin:0;" href="{% if user.is_authenticated %}{% url 'bbapp:account' %}{% else %}{% url 'credentials:login' %}{% endif %}">Apply</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end section -->
+      <!-- section -->
+
+      <!-- end section -->
+      <!-- section --> 
+      <div class="section layout_padding">
+         <div class="container">
+
+         </div>
+      </div>
+      <!-- end section -->
+{% endblock %}
